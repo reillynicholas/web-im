@@ -1,10 +1,17 @@
 import React from "react"
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+import { Global, css } from "@emotion/react"
+import { GlobalStyle } from "./theme/resetCss"
 import routers from "./router/routers"
 
-const App: React.FunctionComponent<{}> = (props) => {
+const App: React.FunctionComponent<{}> = () => {
   return (
-    <div>
+    <>
+      <Global
+        styles={css`
+          ${GlobalStyle("en-US")}
+        `}
+      />
       <BrowserRouter>
         <Routes>
           {routers.map((route, index) => {
@@ -19,7 +26,7 @@ const App: React.FunctionComponent<{}> = (props) => {
           <Route path="*" element={<Navigate to="/IM" />} />
         </Routes>
       </BrowserRouter>
-    </div>
+    </>
   )
 }
 
