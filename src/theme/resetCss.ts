@@ -1,5 +1,5 @@
-type language = "en-US" | "zh-TW"
-export const GlobalStyle = (props: language) => `
+type Language = "en-US" | "zh-TW"
+export const GlobalStyle = (props: Language) => `
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
