@@ -15,6 +15,10 @@ const routers: RouteObject[] = [
     ],
   },
   {
+    path: "about",
+    element: <About />,
+  },
+  {
     path: "*",
     element: <IM />,
   },
