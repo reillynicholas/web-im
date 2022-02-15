@@ -4,6 +4,7 @@ import { Global, css } from "@emotion/react"
 import { GlobalStyle } from "./theme/resetCss"
 import routers from "./router/routers"
 import Loading from "./component/loading"
+import Toast from "./component/toast"
 
 const App: React.FunctionComponent<{}> = () => {
   const routersElement = useRoutes(routers)
@@ -15,12 +16,17 @@ const App: React.FunctionComponent<{}> = () => {
           ${GlobalStyle("en-US")}
         `}
       />
-      {routersElement}
       <Loading
-        ref={(loaidngRef: any) => {
+        ref={(loaidngRef: ILoading) => {
           global.$loading = loaidngRef
         }}
       ></Loading>
+      <Toast
+        ref={(toastRef: IToast) => {
+          global.$toast = toastRef
+        }}
+      />
+      {routersElement}
     </>
   )
 }
