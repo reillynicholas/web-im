@@ -1,4 +1,4 @@
-export default {
+const languageList = {
   "en-US": {
     IM_Test: "test",
   },
@@ -9,3 +9,5 @@ export default {
     IM_Test: "测试",
   },
 }
+
+export default languageList

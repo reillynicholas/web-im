@@ -19,7 +19,7 @@ export const Layout = () => {
       }
     }
     initData()
-  }, [])
+  }, [merchId, shopStore, userInfoStore])
   return (
     <div>
       <Outlet />

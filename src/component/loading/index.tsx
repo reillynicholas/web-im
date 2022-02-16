@@ -27,7 +27,7 @@ export interface IBackdropConfig {
 const Loading: Component<IBackdropProps & RefAttributes<any>> = forwardRef<
   {},
   IBackdropProps
->(({}, ref) => {
+>((props = {}, ref) => {
   const conf = useRef<IBackdropConfig>({
     invisible: true,
     logoColor: "primary",
@@ -39,8 +39,9 @@ const Loading: Component<IBackdropProps & RefAttributes<any>> = forwardRef<
 
   const open = (options?: IBackdropConfig) => {
     if (options) {
-      conf.current.invisible = Boolean(conf.current.invisible)
-      conf.current.onClick = conf?.current?.onClick
+      conf.current.invisible = options?.invisible || true
+      conf.current.onClick = options?.onClick
+      conf.current.logoColor = options?.logoColor || "primary"
     }
     setState({ visable: true })
   }
