@@ -5,12 +5,13 @@ import { GlobalStyle } from "./theme/resetCss"
 import routers from "./router/routers"
 import Loading from "./component/loading"
 import Toast from "./component/toast"
+import { Provider, rootStore } from "./models"
 
 const App: React.FunctionComponent<{}> = () => {
   const routersElement = useRoutes(routers)
 
   return (
-    <>
+    <Provider value={rootStore}>
       <Global
         styles={css`
           ${GlobalStyle("en-US")}
@@ -27,7 +28,7 @@ const App: React.FunctionComponent<{}> = () => {
         }}
       />
       {routersElement}
-    </>
+    </Provider>
   )
 }
 
