@@ -1,12 +1,12 @@
 import { RouteObject } from "react-router-dom"
-
 import IM from "../pages/IM/IM"
 import About from "../pages/About/about"
+import { Layout } from "../component/layout"
 
 const routers: RouteObject[] = [
   {
-    path: "/im",
-    element: <IM />,
+    path: "/",
+    element: <Layout />,
     children: [
       {
         path: "about",
