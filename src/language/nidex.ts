@@ -1,8 +1,9 @@
 import language from "./language"
 import { LanguageCode } from "../entity/type"
+import { rootStore } from "../models/root-store/root-store"
 
 export const translate = (key: string): string => {
-  const languageCode: LanguageCode = "zh-TW"
+  const languageCode: LanguageCode = rootStore.userInfoStore.languageCode
   try {
     return language[languageCode][key] || key
   } catch (e) {
