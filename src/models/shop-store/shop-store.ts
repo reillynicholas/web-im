@@ -1,15 +1,15 @@
 import { flow, Instance, toGenerator, types } from "mobx-state-tree"
-import { Merchant } from "../../entity/type"
+import { IMerchantDto } from "../../entity/type"
 import { BaseMerchant } from "./types"
 import { getMerchInfoRequset } from "./asyncRequest"
 import { translate } from "../../language/nidex"
 
 export const ShopStoreModel = types
   .model("ShopStore", {
-    merchant: types.optional(types.frozen<Merchant>(), BaseMerchant),
+    merchant: types.optional(types.frozen<IMerchantDto>(), BaseMerchant),
   })
   .actions((self) => ({
-    setMerchant(merchant: Merchant) {
+    setMerchant(merchant: IMerchantDto) {
       self.merchant = merchant
     },
   }))
