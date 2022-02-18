@@ -2,10 +2,11 @@ import React from "react"
 import { useNavigate } from "react-router-dom"
 import { translate } from "../../language/nidex"
 import * as styles from "./styles"
+import { observer } from "mobx-react-lite"
 
 interface IIMprops {}
 
-const IM: React.FunctionComponent<IIMprops> = (props) => {
+const IM: React.FunctionComponent<IIMprops> = observer((props) => {
   const navigate = useNavigate()
   const handleClick = () => {
     navigate("/about")
@@ -16,6 +17,6 @@ const IM: React.FunctionComponent<IIMprops> = (props) => {
       {translate("IM_Test")}
     </div>
   )
-}
+})
 
 export default IM
