@@ -5,7 +5,7 @@ export enum MerchantStatus {
   Opening,
 }
 
-export interface MerchantOnlineTimeItem {
+export interface IMerchantOnlineTimeItem {
   close: string
   closeTime: string
   open: string
@@ -35,14 +35,14 @@ export enum BannerType {
   Video,
 }
 
-export interface MerchantOnlineTimes {
-  monday: MerchantOnlineTimeItem[]
-  tuesday: MerchantOnlineTimeItem[]
-  wednesday: MerchantOnlineTimeItem[]
-  thursday: MerchantOnlineTimeItem[]
-  friday: MerchantOnlineTimeItem[]
-  saturday: MerchantOnlineTimeItem[]
-  sunday: MerchantOnlineTimeItem[]
+export interface IMerchantOnlineTimes {
+  monday: IMerchantOnlineTimeItem[]
+  tuesday: IMerchantOnlineTimeItem[]
+  wednesday: IMerchantOnlineTimeItem[]
+  thursday: IMerchantOnlineTimeItem[]
+  friday: IMerchantOnlineTimeItem[]
+  saturday: IMerchantOnlineTimeItem[]
+  sunday: IMerchantOnlineTimeItem[]
 }
 
 export enum PromotionItemType {
@@ -50,7 +50,7 @@ export enum PromotionItemType {
   DiscountBaseOnNumOfOrders, //首单折扣
 }
 
-export interface PromotionItem {
+export interface IPromotionItem {
   name: string
   startDate: string
   endDate: string
@@ -71,7 +71,7 @@ export enum MerchantParkingLotPickupSupportType {
   OptionalParkingLot,
 }
 
-export interface MerchParkingLotPickupFieldDto {
+export interface IMerchParkingLotPickupFieldDto {
   id: string
   name: string
   mandatory: boolean
@@ -92,7 +92,7 @@ export enum ProtonPaymentMethod {
   ApplePay,
 }
 
-export interface SupportedPaymentType {
+export interface ISupportedPaymentType {
   title: string
   paymentType: OrderPaymenMethod
   isDefault: boolean
@@ -160,7 +160,7 @@ export interface IUserInfo {
   }
 }
 
-export interface Merchant {
+export interface IMerchantDto {
   id: string
   name: string
   status: MerchantStatus
@@ -172,7 +172,7 @@ export interface Merchant {
   phone: string
   mail: string
   distance: number
-  onlineTimes: MerchantOnlineTimes
+  onlineTimes: IMerchantOnlineTimes
   description: string
   labels: string[]
   deliveryType: DeliveryType
@@ -181,7 +181,7 @@ export interface Merchant {
   autoMarkOrderToReady: boolean
   willingToReceiveNotification: boolean
   type: MerchantType
-  currentPromotions: PromotionItem[]
+  currentPromotions: IPromotionItem[]
   rating: number
   orderCancellationPenaltyPercentages: {
     Pending: number
@@ -210,7 +210,7 @@ export interface Merchant {
   bannerType: BannerType
   categoryMenuType: CategoryMenuType
   merchParkingLotPickupSupportType: MerchantParkingLotPickupSupportType
-  merchParkingLotPickupFields: MerchParkingLotPickupFieldDto[]
+  merchParkingLotPickupFields: IMerchParkingLotPickupFieldDto[]
   availableCoupons: []
   userCoupons: []
   isAsapOnly: boolean
@@ -218,7 +218,7 @@ export interface Merchant {
   merchDecideConfirmedTime: boolean
   acceptSpecialInstruction: boolean
   showTotalPriceOfOptionsInModifier: boolean
-  supportedPaymentTypes: SupportedPaymentType[]
+  supportedPaymentTypes: ISupportedPaymentType[]
   categoryAndFoodsCountInfo: {
     numberOfFoodsForCategories: { [key: string]: number }
   }

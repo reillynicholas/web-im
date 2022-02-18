@@ -1,8 +1,8 @@
 import { Api } from "../../api/api"
-import { IApiRespone, Merchant } from "../../entity/type"
+import { IApiRespone, IMerchantDto } from "../../entity/type"
 
 interface IMerchInfoResult {
-  result: Merchant
+  result: IMerchantDto
 }
 
 export const getMerchInfoRequset = (

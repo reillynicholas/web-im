@@ -2,13 +2,13 @@ import {
   BannerType,
   CategoryMenuType,
   DeliveryType,
-  Merchant,
+  IMerchantDto,
   MerchantParkingLotPickupSupportType,
   MerchantStatus,
   MerchPaymentType,
 } from "../../entity/type"
 
-export const BaseMerchant: Merchant = {
+export const BaseMerchant: IMerchantDto = {
   id: "",
   name: "",
   status: MerchantStatus.Opening,
