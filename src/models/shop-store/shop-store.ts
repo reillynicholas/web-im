@@ -1,7 +1,8 @@
-import { flow, Instance, types } from "mobx-state-tree"
-import { Api } from "../../api/api"
+import { flow, Instance, toGenerator, types } from "mobx-state-tree"
 import { Merchant } from "../../entity/type"
 import { BaseMerchant } from "./types"
+import { getMerchInfoRequset } from "./asyncRequest"
+import { translate } from "../../language/nidex"
 
 export const ShopStoreModel = types
   .model("ShopStore", {
@@ -18,16 +19,21 @@ export const ShopStoreModel = types
         const {
           status,
           data: { result },
-        } = yield Api.get("/api/Merch/get", { params: { id: id } })
+        } = yield* toGenerator(getMerchInfoRequset(id))
         if (status === 200) {
           self.setMerchant(result)
-          return {
-            success: true,
-            data: result,
-          }
+        } else {
+          global.$toast.open({
+            type: "error",
+            message: translate("common_NetworkError"),
+          })
         }
-        return { success: true, data: {} }
-      } catch (error) {}
+      } catch (error) {
+        global.$toast.open({
+          type: "error",
+          message: translate("common_NetworkError"),
+        })
+      }
     }),
   }))
 

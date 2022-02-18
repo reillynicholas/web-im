@@ -1,13 +1,21 @@
 import React from "react"
+import { useNavigate } from "react-router-dom"
+import { translate } from "../../language/nidex"
 import * as styles from "./styles"
-import { useLanguage } from "../../language/hooks"
 
 interface IIMprops {}
 
 const IM: React.FunctionComponent<IIMprops> = (props) => {
-  const { translate } = useLanguage()
+  const navigate = useNavigate()
+  const handleClick = () => {
+    navigate("/about")
+  }
 
-  return <div style={styles.Content}>{translate("IM_Test")}</div>
+  return (
+    <div style={styles.Content} onClick={handleClick}>
+      {translate("IM_Test")}
+    </div>
+  )
 }
 
 export default IM

@@ -4,11 +4,14 @@ import { BrowserRouter } from "react-router-dom"
 import App from "./App"
 import reportWebVitals from "./reportWebVitals"
 import "./assets/iconfont/iconfont.css"
+import { Provider, rootStore } from "./models"
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <Provider value={rootStore}>
+        <App />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

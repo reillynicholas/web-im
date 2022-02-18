@@ -1,34 +1,15 @@
-import { flow, Instance, types } from "mobx-state-tree"
-import { Api } from "../../api/api"
-import { DeliveryType, IAddress, IUserInfo } from "../../entity/type"
-
-export const BaseUserInfo: IUserInfo = {
-  userId: "",
-  platformServiceFeeCredit: 0,
-  email: "",
-  displayName: "",
-  merchId: "",
-  defaultAddress: null,
-  userConfig: {
-    id: "",
-    userId: "",
-    mile: 0,
-    languageCode: "en-US",
-    orderParkingLotPickupFieldValues: [],
-    deliveryType: DeliveryType.Both,
-    email: "",
-    isEmailNotification: false,
-  },
-  picture: "",
-  allAddresses: [],
-  phone: "",
-}
+import { flow, Instance, toGenerator, types } from "mobx-state-tree"
+import { IUserInfo, IAddress, LanguageCode } from "../../entity/type"
+import { getUserInfoRequest } from "./asyncRequest"
+import { BaseUserInfo } from "./types"
+import { translate } from "../../language/nidex"
+import { storage } from "../../utils/index"
 
 export const UserInfoStoreModel = types
   .model("UserInfoStore", {
     userInfo: types.optional(types.frozen<IUserInfo>(), BaseUserInfo),
     idToken: types.optional(types.frozen<string>(), ""),
-    languageCode: types.optional(types.frozen<string>(), ""),
+    languageCode: types.optional(types.frozen<LanguageCode>(), "en-US"),
   })
   .views((self) => ({
     get allAddresses(): IAddress[] {
@@ -39,36 +20,38 @@ export const UserInfoStoreModel = types
     },
   }))
   .actions((self) => ({
-    updateUserInfo(userInfo: IUserInfo) {
-      self.userInfo = userInfo
-      self.languageCode = "zh-TW"
-    },
     updateIdToken(idToken: string) {
       self.idToken = idToken
     },
   }))
   .actions((self) => ({
+    updateUserInfo(userInfo: IUserInfo) {
+      self.updateIdToken(storage.session.getItem("token"))
+      self.userInfo = userInfo
+      self.languageCode = userInfo.userConfig.languageCode
+    },
+  }))
+  .actions((self) => ({
     getUserInfo: flow(function* () {
       try {
-        const { status, data } = yield Api.post("/api/User/signin")
+        const {
+          status,
+          data: { userInfo },
+        } = yield* toGenerator(getUserInfoRequest())
         if (status === 200) {
-          self.updateUserInfo(data.userInfo)
-          return {
-            isSuccess: true,
-            data,
-          }
-        }
-        return {
-          isSuccess: false,
-          error: "Login Fail",
+          self.updateUserInfo(userInfo)
+          storage.session.setItem("userInfo", userInfo)
+        } else {
+          global.$toast.open({
+            type: "error",
+            message: translate("common_NetworkError"),
+          })
         }
       } catch (error) {
-        console.log(error)
-
-        return {
-          isSuccess: false,
-          error,
-        }
+        global.$toast.open({
+          type: "error",
+          message: translate("common_NetworkError"),
+        })
       }
     }),
   }))
