@@ -1,6 +1,7 @@
 import { RouteObject } from "react-router-dom"
 import IM from "../pages/IM/IM"
 import About from "../pages/About/about"
+import NotFound from "../pages/NotFound"
 import { Layout } from "../component/layout"
 
 const routers: RouteObject[] = [
@@ -20,7 +21,7 @@ const routers: RouteObject[] = [
   },
   {
     path: "*",
-    element: <Layout />,
+    element: <NotFound />,
   },
 ]
 
