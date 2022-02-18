@@ -9,18 +9,18 @@ const routers: RouteObject[] = [
     element: <Layout />,
     children: [
       {
+        path: "IM",
+        element: <IM />,
+      },
+      {
         path: "about",
         element: <About />,
       },
     ],
   },
   {
-    path: "about",
-    element: <About />,
-  },
-  {
     path: "*",
-    element: <IM />,
+    element: <Layout />,
   },
 ]
 

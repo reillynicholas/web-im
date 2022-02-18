@@ -1,4 +1,4 @@
-type Language = "en-US" | "zh-TW"
+import { LanguageCode } from "../entity/type"
 
 const htmlFontSize = (): string => {
   const screenSize = document.body.clientWidth
@@ -23,7 +23,7 @@ const htmlFontSize = (): string => {
   return "100px"
 }
 
-export const GlobalStyle = (props: Language) => `
+export const GlobalStyle = (props: LanguageCode) => `
 html,
 body,
 p,

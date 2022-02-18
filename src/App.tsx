@@ -1,20 +1,25 @@
-import React from "react"
+import React, { useMemo } from "react"
 import { useRoutes } from "react-router-dom"
 import { Global, css } from "@emotion/react"
 import { GlobalStyle } from "./theme/resetCss"
 import routers from "./router/routers"
 import Loading from "./component/loading"
 import Toast from "./component/toast"
-import { Provider, rootStore } from "./models"
+import { useStores } from "./models/root-store/root-store"
+import { observer } from "mobx-react-lite"
 
-const App: React.FunctionComponent<{}> = () => {
+const App: React.FunctionComponent<{}> = observer(() => {
   const routersElement = useRoutes(routers)
 
+  const { userInfoStore } = useStores()
+  const globalStyle = useMemo(() => {
+    return GlobalStyle(userInfoStore.languageCode)
+  }, [userInfoStore.languageCode])
   return (
-    <Provider value={rootStore}>
+    <>
       <Global
         styles={css`
-          ${GlobalStyle("en-US")}
+          ${globalStyle}
         `}
       />
       <Loading
@@ -28,8 +33,8 @@ const App: React.FunctionComponent<{}> = () => {
         }}
       />
       {routersElement}
-    </Provider>
+    </>
   )
-}
+})
 
 export default App

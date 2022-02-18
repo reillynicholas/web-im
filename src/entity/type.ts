@@ -136,11 +136,11 @@ export interface IUserConfig {
   id: string
   userId: string
   mile: number
-  languageCode: string
+  languageCode: LanguageCode
   orderParkingLotPickupFieldValues: IOrderParkingLotPickupFieldValue[]
   deliveryType: number
   email: string
-  isEmailNotification: boolean
+  isEmailNotification: boolean | null
 }
 
 export interface IUserInfo {
@@ -149,11 +149,15 @@ export interface IUserInfo {
   platformServiceFeeCredit: number
   email: string
   displayName: string
-  merchId: string
-  userConfig: IUserConfig | null
+  merchId: string | null
+  userConfig: IUserConfig
   picture: string
   allAddresses: IAddress[]
   phone: string
+  mobileOrEmailBinding: {
+    isMandatory: boolean
+    smsOrEmailBound: boolean
+  }
 }
 
 export interface Merchant {
@@ -227,4 +231,9 @@ export interface Merchant {
   isMergePaymentsEnable?: boolean
   provideUtensilsEnable?: boolean
   isProvideUtensils?: boolean
+}
+
+export interface IApiRespone<T> {
+  status: number
+  data: T
 }
