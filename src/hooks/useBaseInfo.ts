@@ -1,16 +1,20 @@
 import qs from "qs"
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import { useStores } from "../models"
 import { storage } from "../utils/index"
 
 export const useBaseInfo = () => {
   const { userInfoStore, shopStore } = useStores()
+  const enterPage = useRef<string>("") // 小明 web 传过来的参数，决定一进来去到小Y页面还是商家对话页面
 
   useEffect(() => {
-    const { token = "", merchId = "" } = qs.parse(
-      window.location.href.split("?")[1]
-    )
+    const {
+      token = "",
+      merchId = "",
+      page = "",
+    } = qs.parse(window.location.href.split("?")[1])
 
+    enterPage.current = page as string
     if (token && merchId) {
       storage.session.setItem("token", token)
       storage.session.setItem("merchId", merchId)
@@ -30,4 +34,6 @@ export const useBaseInfo = () => {
       global?.$loading.close()
     }
   }
+
+  return { enterPage }
 }

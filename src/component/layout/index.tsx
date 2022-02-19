@@ -3,10 +3,11 @@ import { useBaseInfo } from "../../hooks/useBaseInfo"
 import Header from "../header"
 
 export const Layout = () => {
-  useBaseInfo()
+  const { enterPage } = useBaseInfo()
+
   return (
     <div>
-      <Header />
+      <Header enterPage={enterPage} />
       <Outlet />
     </div>
   )
