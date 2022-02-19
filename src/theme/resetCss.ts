@@ -1,5 +1,6 @@
 import { LanguageCode } from "../entity/type"
 
+// eslint-disable-next-line
 const htmlFontSize = (): string => {
   const screenSize = document.body.clientWidth
   if (screenSize < 450) {
@@ -78,7 +79,7 @@ html {
       ? "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,Arial"
       : "PingFang SC,Hiragino Sans GB,Microsoft YaHei UI,Source Han Sans CN,sans-serif"
   };
-  font-size: ${htmlFontSize()};
+  font-size: 100px;
 }
 
 *, *::before, *::after {

@@ -1,6 +1,6 @@
 import backgroundImg from "../../assets/images/pageNotFoundBg.png"
 
-export default function () {
+const NotFound = function () {
   return (
     <div
       style={{
@@ -14,3 +14,5 @@ export default function () {
     ></div>
   )
 }
+
+export default NotFound
