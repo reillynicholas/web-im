@@ -9,6 +9,7 @@ export const HeaderWrapper: Style = {
   color: Colors.ColorTextPrimary,
   fontSize: rem(20),
   fontWeight: 600,
+  borderBottom: `${rem(1)} solid rgba(0, 0, 0, 0.06)`,
 }
 
 export const Icon: Style = {
@@ -16,6 +17,6 @@ export const Icon: Style = {
 }
 
 export const title: Style = {
-  width: "100%",
+  flex: 1,
   textAlign: "center",
 }

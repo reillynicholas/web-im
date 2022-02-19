@@ -16,17 +16,18 @@ export const useBaseInfo = () => {
       storage.session.setItem("merchId", merchId)
     }
 
-    async function initData() {
-      try {
-        global?.$loading?.open()
-        await userInfoStore.getUserInfo()
-        await shopStore.getMerchantInfo(
-          merchId || storage.session.getItem("merchId")
-        )
-      } finally {
-        global?.$loading.close()
-      }
-    }
-    initData()
+    initData(merchId as string)
   })
+
+  async function initData(merchId: string) {
+    try {
+      global?.$loading?.open()
+      await userInfoStore.getUserInfo()
+      await shopStore.getMerchantInfo(
+        merchId || storage.session.getItem("merchId")
+      )
+    } finally {
+      global?.$loading.close()
+    }
+  }
 }

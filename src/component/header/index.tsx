@@ -1,6 +1,6 @@
 import { HeaderWrapper, Icon, title } from "./styles"
 
-const header = () => {
+const Header = () => {
   return (
     <div style={HeaderWrapper}>
       <i className="iconicon_previous iconfont" style={Icon}></i>
@@ -9,4 +9,4 @@ const header = () => {
   )
 }
 
-export default header
+export default Header
