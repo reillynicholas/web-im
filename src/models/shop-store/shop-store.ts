@@ -2,7 +2,7 @@ import { flow, Instance, toGenerator, types } from "mobx-state-tree"
 import { IMerchantDto } from "../../entity/type"
 import { BaseMerchant } from "./types"
 import { getMerchInfoRequset } from "./asyncRequest"
-import { translate } from "../../language/nidex"
+import { translate } from "../../language"
 
 export const ShopStoreModel = types
   .model("ShopStore", {

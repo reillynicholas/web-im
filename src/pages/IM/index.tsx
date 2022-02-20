@@ -1,6 +1,6 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
-import { translate } from "../../language/nidex"
+import { translate } from "../../language"
 import * as styles from "./styles"
 import { observer } from "mobx-react-lite"
 
