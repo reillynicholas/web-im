@@ -2,7 +2,7 @@ import { flow, Instance, toGenerator, types } from "mobx-state-tree"
 import { IUserInfo, IAddress, LanguageCode } from "../../entity/type"
 import { getUserInfoRequest } from "./asyncRequest"
 import { BaseUserInfo } from "./types"
-import { translate } from "../../language/nidex"
+import { translate } from "../../language"
 import { storage } from "../../utils/index"
 
 export const UserInfoStoreModel = types
