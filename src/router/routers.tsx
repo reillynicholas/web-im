@@ -1,6 +1,6 @@
 import { RouteObject } from "react-router-dom"
-import IM from "../pages/IM/IM"
-import About from "../pages/About/about"
+import IM from "../pages/IM"
+import About from "../pages/littleY"
 import NotFound from "../pages/NotFound"
 import { Layout } from "../component/layout"
 
