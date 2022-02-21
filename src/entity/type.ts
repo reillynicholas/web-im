@@ -233,7 +233,7 @@ export interface IMerchantDto {
   isProvideUtensils?: boolean
 }
 
-export interface IApiRespone<T> {
+export interface IApiRespond<T> {
   status: number
   data: T
 }

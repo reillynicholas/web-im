@@ -1,5 +1,5 @@
 import { Api } from "../../api/api"
-import { IApiRespone, IMerchantDto } from "../../entity/type"
+import { IApiRespond, IMerchantDto } from "../../entity/type"
 
 interface IMerchInfoResult {
   result: IMerchantDto
@@ -7,6 +7,6 @@ interface IMerchInfoResult {
 
 export const getMerchInfoRequset = (
   id: string
-): Promise<IApiRespone<IMerchInfoResult>> => {
+): Promise<IApiRespond<IMerchInfoResult>> => {
   return Api.get("/api/Merch/get", { params: { id } })
 }

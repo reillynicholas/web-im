@@ -1,5 +1,6 @@
 import imPage from "./pages/im"
 import common from "./pages/common"
+import littleY from "./pages/littleY"
 
 type LanguageList = {
   "en-US": {
@@ -17,13 +18,16 @@ export default {
   "en-US": {
     ...common["en-US"],
     ...imPage["en-US"],
+    ...littleY["en-US"],
   },
   "zh-TW": {
-    ...common["en-US"],
+    ...common["zh-TW"],
     ...imPage["zh-TW"],
+    ...littleY["zh-TW"],
   },
   "zh-CN": {
-    ...common["en-US"],
+    ...common["zh-CN"],
     ...imPage["zh-CN"],
+    ...littleY["zh-CN"],
   },
 } as LanguageList
