@@ -9,7 +9,7 @@ interface IIMprops {}
 const IM: React.FunctionComponent<IIMprops> = observer((props) => {
   const navigate = useNavigate()
   const handleClick = () => {
-    navigate("/about")
+    navigate("/littleY")
   }
 
   return (

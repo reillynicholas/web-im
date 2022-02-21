@@ -16,7 +16,10 @@ export const Icon: Style = {
   fontSize: rem(20),
 }
 
-export const title: Style = {
+export const Title: Style = {
+  overflow: "hidden",
   flex: 1,
   textAlign: "center",
+  whiteSpace: "nowrap",
+  textOverflow: "ellipsis",
 }

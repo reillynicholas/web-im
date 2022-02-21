@@ -1,6 +1,6 @@
 import { RouteObject } from "react-router-dom"
 import IM from "../pages/IM"
-import About from "../pages/littleY"
+import LittleY from "../pages/littleY"
 import NotFound from "../pages/NotFound"
 import { Layout } from "../component/layout"
 
@@ -14,8 +14,8 @@ const routers: RouteObject[] = [
         element: <IM />,
       },
       {
-        path: "about",
-        element: <About />,
+        path: "littleY",
+        element: <LittleY />,
       },
     ],
   },
