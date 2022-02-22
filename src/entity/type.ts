@@ -237,3 +237,12 @@ export interface IApiRespond<T> {
   status: number
   data: T
 }
+
+export enum EventType {
+  Back,
+}
+
+export interface IEventData<T> {
+  type: EventType
+  data: T
+}
